@@ -1,0 +1,1 @@
+rsync -azh blog javier:/home/javierarce/assets.javierarce.com/
