@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{Title}{block:PostTitle} - {PostTitle}{/block:PostTitle}</title>
+    <meta name="description" content="Javier Arce's Wardian Case" />
+    <meta property="twitter:account_id" content="1486067524" />
+    <meta name="viewport" content="width=775, maximum-scale=1.0" />
+    <link rel="icon" href="{Favicon}"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
+    <link href='http://assets.javierarce.com/blog/css/blog.css' rel='stylesheet' type='text/css'>
+
+    <script src="http://www.google.com/jsapi"></script>
+    <script>google.load("jquery", "1.7.1");</script>
+    <script src="http://assets.javierarce.com/blog/js/production.min.js"></script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-298577-9']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script src="http://stats.javierarce.com/mint/?js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <nav>
+          <img class="logo" src="http://assets.javierarce.com/blog/img/logo.png" />
+          <h1><a href="http://blog.javierarce.com">{Title}</a></h1>
+          <ul>
+            <li><a href="http://sillyinc.tumblr.com" class="silly">Silly Inc.</a></li>
+            <li><a href="http://open.spotify.com/user/javierarce/playlist/7vqFM7WRxeDHdsDMmGntuR" title="Things I listen to" class="spotify">&#x266B;</a></li>
+            <li><a href="http://www.dribbble.com/javier" title="Things I design" class="dribbble">Dribbble</a></li>
+            <li><a href="http://twitter.com/javier" title="Things I say" class="twitter">Twitter</a></li>
+            <li><a href="http://instagram.com/javier" title="Things I photograph" class="instagram">Instagram</a></li>
+            <!--   <li><a href="http://readmill.com/javier" title="Things I read" class="readmill">Readmill</a></li>
+            <li><a href="http://blog.javierarce.com/ask" title="Ask me" class="ask">Ask me something</a></li>-->
+            <li><a href="#" class="about" title="About me">About me</a></li>
+          </ul>
+        </nav>
+
+        <div id="listening" class="snitch"></div>
+      </header>
+
+      <div id="about" class="about">
+        <div class="inner">
+          <a href="#" class="close"></a>
+
+          {block:Description}{Description}{/block:Description}
+
+        </div>
+      </div>
+
+      <div class="main">
+        {block:SearchPage}
+        <div class="content">
+          <div class="datetime">
+            {lang:SearchResultCount results}
+          </div>
+          <h2>{lang:Search results for SearchQuery 2}</h2>
+        </div>
+        {/block:SearchPage}
+        {block:Posts}
+
+        {block:Regular}<article>{Body}{/block:Regular}
+
+          {block:Photo}
+          <article  class="photo">
+            <a href="{Permalink}" class="icon" title="{Name}"></a>
+            {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" title="{PhotoAlt}">{LinkCloseTag}{Caption}
+            {/block:Photo}
+            {block:Video}
+            <article class="video"><div class="video">{Video-500}</div>{Caption}
+              {/block:Video}
+
+              {block:Audio}
+              <article class="audio">{AudioPlayerGrey}{Caption}
+
+                {/block:Audio}
+
+                {block:Quote}
+                <article class="quote"><blockquote class="highlight large">
+                    <a href="{Permalink}" class="icon" title="{Name}"></a>
+                    {Quote}
+                  </blockquote>
+                  {block:Source}<div class="source">&mdash; {Source}</div>{/block:Source}
+
+
+                  {/block:Quote}
+
+                  {block:Link}
+                  <article class="link">
+                    <a href="{Permalink}" class="icon" title="{Name}"></a>
+                    <h2><a href="{URL}" title="{Name}" {Target}>{Name}</a> →</h2>
+                    {block:Description}{Description}{/block:Description}
+                    {/block:Link}
+
+                    {block:Conversation}<article>
+                      {block:Title}<h2>{Title}</h2>{/block:Title}
+                      <p>
+                        {block:Lines}
+                        {block:Label}<strong>{Label}</strong>{/block:Label} {Line}<br />{/block:Lines}
+                      </p>
+
+                      {/block:Conversation}
+
+                      <footer>
+                        <ul>
+                          {block:Date}<li class="date"><a href="{Permalink}">{TimeAgo}</a>{/block:Date}</li>
+                          {block:NoteCount}<li class="count"><a href="{Permalink}"> {NoteCountWithLabel}</a></li>{/block:NoteCount}
+                          {block:ContentSource}<li class="via">via <a href="{SourceURL}">{SourceTitle}</a></li>{/block:ContentSource}
+
+                          {block:RebloggedFrom}<li class="via">via <a href="{ReblogParentURL}">{ReblogParentTitle}</a></li>{/block:RebloggedFrom}
+
+                          {block:HasTags}
+
+                          {block:Tags}
+                          <li class="tag">
+                            <a href="{TagURL}">{Tag}</a>
+                          </li>
+                          {/block:Tags}
+
+                          {/block:HasTags}
+
+                          <!--
+                          {block:Link}<li class="readlater"><iframe border="0" scrolling="no" width="78" height="17" allowtransparency="true" frameborder="0"
+                              style="margin-bottom: -3px; z-index: 1338; border: 0px; background-color: transparent; overflow: hidden;"
+                              src="http://www.instapaper.com/e2?url={URL}&title={Name}&description={PlaintextDescription}"
+                              ></iframe>
+                          </li>{/block:Link}
+                          -->
+                        </ul>
+                      </footer>
+                    </article>
+                    {/block:Posts}
+
+                    {block:PermalinkPage}
+                    {block:PostNotes}
+
+                    <h3>{lang:Notes}</h3>
+                    <p>{PostNotes}</p>
+
+                    {/block:PostNotes}
+                    {/block:PermalinkPage}
+
+                    {block:Pagination}
+                    <div class="pagination">
+                      {block:NextPage}
+                      <div class="navleft">
+                        &larr;&nbsp;<a href="{NextPage}">past</a>
+                      </div>
+                      {/block:NextPage}
+                      {block:PreviousPage}
+                      <div class="navright">
+                        <a href="{PreviousPage}">future</a>&nbsp;&rarr;
+                      </div>
+                      {/block:PreviousPage}
+                    </div>
+                    {/block:Pagination}
+
+                    {block:PermalinkPagination}
+                    <div class="pagination">
+                      {block:PreviousPost}
+                      <div class="navleft">
+                        &larr;&nbsp;<a href="{PreviousPost}">{lang:Previous post}</a>
+                      </div>
+                      {/block:PreviousPost}
+                      {block:NextPost}
+                      <div class="navright">
+                        <a href="{NextPost}">{lang:Next post}</a>&nbsp;&rarr;
+                      </div>
+                      {/block:NextPost}
+                    </div>
+                    {/block:PermalinkPagination}
+                  </div>
+                </div>
+              </body>
+            </html>
