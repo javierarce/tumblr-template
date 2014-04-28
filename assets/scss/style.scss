@@ -48,11 +48,11 @@ article.quote .source p {
   display: none;
 }
 article.link blockquote {
-  margin: 0 0 10px 0;
-  padding: 4px 0px;
+  margin: 0 0 10px 14px;
+  padding: 14px 0 4px 0px;
   font-size: 18px;
   line-height: 28px;
-  font-style:italic;
+  border-left: 4px solid #f1f1f1;
 }
 article.quote blockquote,q {
   quotes: """"
