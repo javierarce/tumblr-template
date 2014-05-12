@@ -9335,7 +9335,6 @@ plugins.popcorn = function($article) {
 postCount = 0;
 tags      = [];
 
-
 function instapaper(url, title) {
   window.location = "http://www.instapaper.com/hello2?url=" + encodeURIComponent(url) + "&title=" + encodeURIComponent(title);
 }
