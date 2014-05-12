@@ -27,9 +27,11 @@ caption,th,td {
   text-align: left;
   font-weight: normal
 }
+
 article {
   position: relative;
 }
+
 article .note {
   position: absolute;
   display: none;
@@ -122,6 +124,7 @@ header {
 }
 header nav {
   text-align: center;
+  position:relative;
 }
 header h1 a {
   text-transform: uppercase;
@@ -597,4 +600,19 @@ small {
     text-align: center;
     font-size: 11px;
   }
+}
+
+nav {
+  /*position: relative;*/
+  a { display: block;}
+}
+
+.bubble {
+  border: 1px solid #f1f1f1;
+  position:absolute;
+  background: #fff;
+  padding: 10px 15px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }

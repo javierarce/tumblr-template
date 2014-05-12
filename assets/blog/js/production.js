@@ -9335,10 +9335,42 @@ plugins.popcorn = function($article) {
 postCount = 0;
 tags      = [];
 
-
 function instapaper(url, title) {
   window.location = "http://www.instapaper.com/hello2?url=" + encodeURIComponent(url) + "&title=" + encodeURIComponent(title);
 }
+
+var sentences = ["Stop touching my face", "This is very silly", "Hi", "How are you?"];
+
+var onLogoClick = function(e) {
+  e.preventDefault();
+
+  var top = 30 + Math.round(Math.random() * 70) + "px";
+  var sentence = sentences[Math.round(Math.random() * (sentences.length - 1))];
+
+  var right = $(".bubble").width(); 
+
+  if ($(".bubble").length > 0) {
+    $(".bubble").fadeOut(250, function() {
+      $(this).remove();
+      $("nav").append("<div class='bubble'></div>");
+      $(".bubble").css({ top: top, right: right });
+      $(".bubble").html(sentence);
+    });
+  } else {
+
+    $("nav").append("<div class='bubble'></div>");
+    $(".bubble").css({ top: top, right: right });
+    $(".bubble").html(sentence);
+  }
+
+
+};
+
+var bubbles = function() {
+
+  $("nav a").click(onLogoClick);
+
+};
 
 var tumblrStats = function() {
 
@@ -9385,6 +9417,7 @@ $(function() {
   $("article").tumblrPlugins({ tag: "li.tag a", plugins: ["NSA", "b"] });
   $("#listening").snitch({ username: "javierarce", api_key: "52baf5483029010e0e7ece53ac76449e" });
 
+  //bubbles();
   tumblrStats();
 
   //$.ajax({ url: 'http://monitor.javierarce.com/api/dates', dataType: 'jsonp' }).done(function(data) {
