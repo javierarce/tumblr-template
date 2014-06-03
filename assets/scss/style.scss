@@ -15,6 +15,7 @@ body {
 
 p {
   padding-bottom: 10px;
+  font-size: 18px;
   line-height: 25px;
   & > p { padding-bottom: 0 }
 }
@@ -49,12 +50,29 @@ article.quote .source {
 article.quote .source p {
   display: none;
 }
-article.link blockquote {
-  margin: 0 0 10px 14px;
-  padding: 4px 0 4px 14px;
+
+article.link blockquote p:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+article.link blockquote p:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+article.link p {
   font-size: 18px;
+  line-height: 25px;
+}
+
+article.link blockquote {
+  margin: 20px 0 15px 14px;
+  padding: 2px 0 4px 14px;
+  font-size: 17px;
   line-height: 28px;
   border-left: 4px solid #f1f1f1;
+  p { font-size: 17px; }
 }
 article.quote blockquote,q {
   quotes: """"
@@ -89,9 +107,16 @@ article .icon {
 article.photo .icon {
   background: url(http://assets.javierarce.com/img/photo.png) no-repeat;
 }
-article.photo > a {
-  display: block;
+article.photo {
+
+  img { max-width: 640px; }
+
+  & > a {
+    display: block;
+  }
+
 }
+
 article.link .icon {
   background: url(http://assets.javierarce.com/img/link.png) no-repeat;
 }
@@ -187,7 +212,7 @@ header ul {
   padding: 0;
 }
 header ul li {
-  display: inline;
+  display: inline-block;
   padding: 0;
   margin: 0 7px 0 0
 }
@@ -290,7 +315,7 @@ input {
   border: 1px solid #999
 }
 .wrapper {
-  width: 500px;
+  width: 640px;
   margin: 0 auto 20px auto;
   clear: both;
 }
@@ -485,6 +510,28 @@ ol.notes li {
   padding: 0 0 0 10px;
   border-left: 1px solid #f1f1f1;
 }
+
+ol.notes li, ol.notes li a {
+  font-size: 14px;
+}
+
+ol.notes li.reblog blockquote {
+  margin: 10px 0 10px 5px;
+  width: 400px;
+}
+
+ol.notes li.reblog blockquote a {
+  font-weight: normal;
+}
+
+ol.notes li .avatar_frame {
+  display:none;
+}
+
+ol.notes li.original_post > span a {
+  color: #F05658;
+}
+
 .regular_post_body img {
   max-width: 100%
 }

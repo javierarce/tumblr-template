@@ -8621,7 +8621,7 @@ api - https://github.com/documentcloud/document-viewer/blob/master/public/javasc
         impl.loop = !!src.match( /loop=1/ );
         impl.autoplay = !!src.match( /autoplay=1/ );
 
-        vimeoContainer.width = media.style.width ? media.style.width : 500;
+        vimeoContainer.width = media.style.width ? media.style.width : 640;
         vimeoContainer.height = media.style.height ? media.style.height : 281;
         vimeoContainer.frameBorder = 0;
         vimeoContainer.webkitAllowFullScreen = true;

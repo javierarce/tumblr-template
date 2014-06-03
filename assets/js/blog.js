@@ -78,7 +78,58 @@ var tumblrStats = function() {
   });
 };
 
+function setupVideos() {
+
+var videos = [];
+
+    var color = "55AAAA";
+    var opts = "title=0&byline=0&portrait=0";
+
+    $("iframe").each(function() {
+      var $obj = $(this);
+      var data = $obj.attr("data");
+      var vsrc = $obj.attr("src");
+      var oldW = $obj.attr("width");
+      var newW = 640;
+      var oldH = $obj.attr("height");
+      var p = oldW/newW;
+      var newH = (oldH / p);
+      if (vsrc.search("youtube") > 0) {
+      $obj.replaceWith('<iframe src="'+vsrc+'?'+opts+'&amp;color='+color+'" width="'+newW+'" height="'+newH+'" frameborder="0"></iframe>');
+      }
+      });
+
+    var
+    i = 0,
+      iframes = document.body.getElementsByTagName('iframe'),
+      newVimeoWidth = 640,
+      newVimeoHeight = 'auto';
+    window.players = [];
+    var players = [];
+    for (var x in iframes){
+
+
+      if(iframes[x].src && iframes[x].src.indexOf('player.vimeo.com') > -1){
+
+        if (newVimeoHeight == 'auto'){
+          newVimeoHeight = ( newVimeoWidth * 9 ) / 16;
+        }
+
+        iframes[x].setAttribute("id", "player" + x);
+        iframes[x].width = newVimeoWidth;
+        iframes[x].height = newVimeoHeight;
+        iframes[x].setAttribute("src", iframes[x].src + "?api=1&player_id=player" + x);
+
+
+
+      }
+    }
+
+}
+
 $(function() {
+
+  setupVideos();
 
   $("article").tumblrPlugins({ tag: "li.tag a", plugins: ["NSA", "b"] });
   $("#listening").snitch({ username: "javierarce", api_key: "52baf5483029010e0e7ece53ac76449e" });
