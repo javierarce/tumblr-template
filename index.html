@@ -72,6 +72,13 @@
             <a href="{Permalink}" class="icon" title="{Name}"></a>
             {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" title="{PhotoAlt}">{LinkCloseTag}{Caption}
             {/block:Photo}
+
+            {block:Photoset}
+          <article  class="photo">
+            <a href="{Permalink}" class="icon" title="{Name}"></a>
+            {Photoset}
+            {/block:Photoset}
+
             {block:Video}
             <article class="video"><div class="video">{Video-500}</div>{Caption}
               {/block:Video}
@@ -124,14 +131,6 @@
                           {/block:Tags}
 
                           {/block:HasTags}
-
-                          <!--
-                          {block:Link}<li class="readlater"><iframe border="0" scrolling="no" width="78" height="17" allowtransparency="true" frameborder="0"
-                              style="margin-bottom: -3px; z-index: 1338; border: 0px; background-color: transparent; overflow: hidden;"
-                              src="http://www.instapaper.com/e2?url={URL}&title={Name}&description={PlaintextDescription}"
-                              ></iframe>
-                          </li>{/block:Link}
-                          -->
                         </ul>
                       </footer>
                     </article>
