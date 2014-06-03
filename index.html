@@ -26,19 +26,18 @@
     <script src="http://stats.javierarce.com/mint/?js" type="text/javascript"></script>
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper{block:PermalinkPage}{PostTitle} test{/block:PermalinkPage}">
       <header>
         <nav>
           <a href="http://blog.javierarce.com" title="Please, stop touching my face. Thanks."><img class="logo" src="http://assets.javierarce.com/blog/img/logo.png" /></a>
           <h1><a href="http://blog.javierarce.com" title="{Title}">{Title}</a></h1>
           <ul>
-            <li><a href="http://sillyinc.tumblr.com" class="silly">Silly Inc.</a></li>
+           <li><a href="http://javierarce.com" class="silly">Secret HQ</a></li>
+            <li><a href="http://sillyinc.tumblr.com" class="blog">Silly Inc.</a></li>
             <li><a href="http://open.spotify.com/user/javierarce/playlist/7vqFM7WRxeDHdsDMmGntuR" title="Things I listen to" class="spotify">&#x266B;</a></li>
             <li><a href="http://www.dribbble.com/javier" title="Things I design" class="dribbble">Dribbble</a></li>
             <li><a href="http://twitter.com/javier" title="Things I say" class="twitter">Twitter</a></li>
             <li><a href="http://instagram.com/javier" title="Things I photograph" class="instagram">Instagram</a></li>
-            <!--   <li><a href="http://readmill.com/javier" title="Things I read" class="readmill">Readmill</a></li>
-            <li><a href="http://blog.javierarce.com/ask" title="Ask me" class="ask">Ask me something</a></li>-->
             <li><a href="#" class="about" title="About me">About me</a></li>
           </ul>
         </nav>
@@ -71,7 +70,7 @@
           {block:Photo}
           <article  class="photo">
             <a href="{Permalink}" class="icon" title="{Name}"></a>
-            {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" title="{PhotoAlt}">{LinkCloseTag}{Caption}
+            {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" title="{PhotoAlt}">{LinkCloseTag}{Caption}
             {/block:Photo}
             {block:Video}
             <article class="video"><div class="video">{Video-500}</div>{Caption}
