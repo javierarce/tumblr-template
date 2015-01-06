@@ -1,60 +1,86 @@
 plugins = {};
 
-plugins.NSA = function($elem) {
-  console.log("test plugin");
-};
+plugins.walk = function($elem) {
 
-plugins.popcorn = function($article) {
+  function getCurrentDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
 
-  var $video = $article.find(".video");
-  var src    = $video.find("iframe").attr("src");
-  var width  = $video.find("iframe").css("width");
-  var height = $video.find("iframe").css("height");
+    var yyyy = today.getFullYear();
+    if(dd<10){
+      dd='0'+dd;
+    } 
+    if(mm<10){
+      mm='0'+mm;
+    } 
+    return yyyy+'-'+mm+'-'+dd;
+  }
 
-  $video.fadeOut(250, function() { this.remove(); });
+  $elem.prepend("<div class='chart' />");
 
-  var id = "player_" + Math.round(Math.random(100) * 100);
-  var annotationID = id + "_annotations";
+  var margin = { top: 10, right: 0, bottom: 25, left: 40 };
+  var width = $(".walk-diagram-js").width() - margin.left - margin.right;
+  var height = 140 - margin.top - margin.bottom;
 
-  $article.prepend('<div id="'+id+'" class="annotation_player"><div id="' + annotationID +'" class="annotations" /></div>');
-  $article.find("#" + id).width(width).height(height);
+  var y = d3.scale.linear()
+  .range([height, 0]);
 
-  var p = Popcorn.youtube('#' + id, src );
+  var chart = d3.select(".chart")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  p.code({
-    "start": 0,
-    "end": 4,
-    onStart: function() {
-      $("#" + annotationID).fadeOut(250, function() {
-        $("#" + annotationID).html('<div class="welcome">This video contains annotations</div>');
-        $("#" + annotationID).fadeIn(250);
-      });
-    }
-  })
-  .code({
-    "start": 14,
-    "end": 24,
-    onStart: function() {
-      $("#" + annotationID).fadeOut(250, function() {
-        $("#" + annotationID).html('iTest');
-        $("#" + annotationID).fadeIn(250);
-      });
-    }
-  }).footnote({
-    "start": 54,
-    "end": 98,
-    "target": annotationID,
-    "text": '<a href="https://twitter.com/ioerror" target="_blank">Jacob Appelbaum on Twitter</a>'
-  }).footnote({
-    "start": 90,
-    "end": 95,
-    "target": annotationID,
-    "text": "Test 2"
-  }).footnote({
-    "start": 45,
-    "end": 65,
-    "target": annotationID,
-    "text": '<a href="http://www.cru-inc.com/products/wiebetech/mouse_jiggler" target="_blank">Mouse Jiggler</a>'
+  d3.json("http://monitor.javierarce.com/api/month", function(error, json) {
+    if (error) return console.warn(error);
+    data = json;
+
+    var barWidth = width/data.length;
+
+    y.domain([0, d3.max(data, function(d) { return d.steps; } )]);
+
+    var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(5);
+
+    chart.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+
+    var label = chart.append("text")
+    .attr("x", function() {
+      return (width/2) - (64/2) + margin.left - margin.right;
+    })
+    .attr("y", height)
+    .attr("dy", "1.3em")
+    .attr("font-size", ".8em")
+    .attr("font-style", "italic")
+    .text("Last 30 days")
+    .attr("text-anchor", "middle");
+
+    var bar = chart.selectAll(".bar")
+    .data(data.reverse())
+    .enter()
+    .append("rect")
+    .attr("class", function(d) {
+      var date = d.created_at.split("T")[0];
+      if (date == getCurrentDate()) {
+        return "bar today";
+      } else {
+        return "bar";
+      }
+    })
+    .attr("transform", function(d, i) { return "translate(" + (2 + i * barWidth) + ", 0 )"; });
+
+    bar
+    .attr("y", function(d){ return d.steps ? y(d.steps) : height - 1; })
+    .attr("height", function(d) { return d.steps ? height - y(d.steps) : 1; })
+    .attr("width", barWidth - 1);
+
+
   });
 
 };
+

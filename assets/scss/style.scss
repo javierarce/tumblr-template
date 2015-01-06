@@ -731,3 +731,28 @@ nav a {
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
+
+
+.bar {
+  fill: black;
+}
+
+.bar.today {
+  fill: #666;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+

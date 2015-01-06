@@ -1,1 +1,1 @@
-rsync -azh blog javier:/home/javierarce/assets.javierarce.com/
+rsync -azh blog javierarce@javierarce.com:/home/javierarce/assets.javierarce.com/

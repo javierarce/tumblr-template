@@ -1,3 +1,4 @@
+
 postCount = 0;
 tags      = [];
 
@@ -119,27 +120,19 @@ var videos = [];
         iframes[x].width = newVimeoWidth;
         iframes[x].height = newVimeoHeight;
         iframes[x].setAttribute("src", iframes[x].src + "?api=1&player_id=player" + x);
-
-
-
       }
     }
-
 }
+
 
 $(function() {
 
   setupVideos();
 
-  $("article").tumblrPlugins({ tag: "li.tag a", plugins: ["NSA", "b"] });
+  $("article").tumblrPlugins({ tag: "li.tag a", plugins: ["walk"] });
   $("#listening").snitch({ username: "javierarce", api_key: "52baf5483029010e0e7ece53ac76449e" });
 
-  //bubbles();
   tumblrStats();
-
-  //$.ajax({ url: 'http://monitor.javierarce.com/api/dates', dataType: 'jsonp' }).done(function(data) {
-  //console.log(data);
-  //});
 
   $("article.link").each(function(i, post) {
     var $post = $(post);
@@ -240,4 +233,3 @@ $(function() {
   });
 
 });
-
