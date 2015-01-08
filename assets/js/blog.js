@@ -9,6 +9,7 @@ function instapaper(url, title) {
 var sentences = ["Stop touching my face", "This is very silly", "Hi", "How are you?"];
 
 var onLogoClick = function(e) {
+
   e.preventDefault();
 
   var top = 30 + Math.round(Math.random() * 70) + "px";
@@ -133,6 +134,8 @@ $(function() {
   $("#listening").snitch({ username: "javierarce", api_key: "52baf5483029010e0e7ece53ac76449e" });
 
   tumblrStats();
+
+  //bubbles();
 
   $("article.link").each(function(i, post) {
     var $post = $(post);
