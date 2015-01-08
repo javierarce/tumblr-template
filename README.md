@@ -1,4 +1,4 @@
 tumblr-template
 ===============
 
-Template for http://blog.javierarce.com
+Template for [my tumblr](http://blog.javierarce.com).
