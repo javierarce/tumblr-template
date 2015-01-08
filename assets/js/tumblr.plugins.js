@@ -17,11 +17,11 @@ plugins.walk = function($elem) {
     return yyyy+'-'+mm+'-'+dd;
   }
 
-  $elem.prepend("<div class='chart' />");
+  $elem.prepend("<svg class='chart'></svg>");
 
   var margin = { top: 10, right: 0, bottom: 25, left: 40 };
-  var width = $(".walk-diagram-js").width() - margin.left - margin.right;
-  var height = 140 - margin.top - margin.bottom;
+  var width = $elem.width() - margin.left - margin.right;
+  var height = 300 - margin.top - margin.bottom;
 
   var y = d3.scale.linear()
   .range([height, 0]);
@@ -51,13 +51,13 @@ plugins.walk = function($elem) {
 
     var label = chart.append("text")
     .attr("x", function() {
-      return (width/2) - (64/2) + margin.left - margin.right;
+      return (width/2) - (362/2) + margin.left - margin.right;
     })
     .attr("y", height)
-    .attr("dy", "1.3em")
-    .attr("font-size", ".8em")
+    .attr("dy", "1.5em")
+    .attr("font-size", ".7em")
     .attr("font-style", "italic")
-    .text("Last 30 days")
+    .text("Number of steps per day. The red bar indicates the current day.")
     .attr("text-anchor", "middle");
 
     var bar = chart.selectAll(".bar")
