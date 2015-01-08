@@ -35,6 +35,7 @@
            <li><a href="http://javierarce.com" class="silly">Secret HQ</a></li>
             <li><a href="http://sillyinc.tumblr.com" class="blog">Silly Inc.</a></li>
             <li><a href="http://open.spotify.com/user/javierarce/playlist/7vqFM7WRxeDHdsDMmGntuR" title="Things I listen to" class="spotify">&#x266B;</a></li>
+             <li><a href="http://tilde.club/~javier" title="~" class="~">~</a></li>
             <li><a href="http://www.dribbble.com/javier" title="Things I design" class="dribbble">Dribbble</a></li>
             <li><a href="http://twitter.com/javier" title="Things I say" class="twitter">Twitter</a></li>
             <li><a href="http://instagram.com/javier" title="Things I photograph" class="instagram">Instagram</a></li>
@@ -77,6 +78,9 @@
           <article  class="photo">
             <a href="{Permalink}" class="icon" title="{Name}"></a>
             {Photoset}
+            {block:Caption}
+        {Caption}
+    {/block:Caption}
             {/block:Photoset}
 
             {block:Video}
