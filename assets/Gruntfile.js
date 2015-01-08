@@ -8,7 +8,7 @@ module.exports = function(grunt) {
           dist: {
             src: [
               'js/underscore.min.js',
-              'js/popcorn.js',
+              'js/d3.v3.min.js',
               'js/tumblr.plugins.js',
               'js/jquery.tumblr.plugin.js',
               'js/jquery.music.snitch.js',
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
 
         watch: {
           app: {
-            files: ['js/*.js'],
+            files: ['js/**/*.js'],
             options: {
               livereload: false,
               spawn: false,
