@@ -756,3 +756,17 @@ nav a {
   display: none;
 }
 
+
+.BookList {
+}
+.BookList ul {
+  list-style:none;
+}
+.BookList li {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 10px 0 0;
+}
+.BookList li a img {
+  height: 220px;
+}

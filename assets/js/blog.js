@@ -134,6 +134,7 @@ $(function() {
   $("#listening").snitch({ username: "javierarce", api_key: "52baf5483029010e0e7ece53ac76449e" });
 
   tumblrStats();
+  $(".js-BookList").books();
 
   //bubbles();
 

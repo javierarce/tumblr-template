@@ -79,8 +79,6 @@ plugins.walk = function($elem) {
     .attr("height", function(d) { return d.steps ? height - y(d.steps) : 1; })
     .attr("width", barWidth - 1);
 
-
   });
 
 };
-

@@ -7,11 +7,9 @@ module.exports = function(grunt) {
         concat: {
           dist: {
             src: [
-              'js/underscore.min.js',
-              'js/d3.v3.min.js',
+              'js/vendor/**/*.js',
               'js/tumblr.plugins.js',
-              'js/jquery.tumblr.plugin.js',
-              'js/jquery.music.snitch.js',
+              'js/books.js',
               'js/blog.js',
             ],
             dest: 'blog/js/production.js'
@@ -87,7 +85,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-deploy');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['watch', 'jshint', 'concat', 'uglify', 'imagemin', 'compass']);
-    grunt.registerTask('generate', ['jshint', 'concat', 'uglify', 'imagemin', 'compass']);
+    grunt.registerTask('watch', ['jshint', 'concat', 'uglify', 'imagemin', 'compass', 'watch']);
+    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'imagemin', 'compass']);
 
 };
