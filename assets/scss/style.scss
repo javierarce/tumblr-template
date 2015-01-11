@@ -735,6 +735,7 @@ nav a {
 
 .bar {
   fill: black;
+  shape-rendering: crispEdges;
 }
 
 .bar.today {
@@ -743,6 +744,7 @@ nav a {
 
 .axis {
   font: 10px sans-serif;
+  shape-rendering: crispEdges;
 }
 
 .axis path,
@@ -754,8 +756,13 @@ nav a {
 
 .x.axis path {
   display: none;
+  shape-rendering: crispEdges;
 }
 
+line.y {
+  stroke: #f1f1f1;
+  shape-rendering: crispEdges;
+}
 
 .BookList {
 }

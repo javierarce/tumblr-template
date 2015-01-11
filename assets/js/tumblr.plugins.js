@@ -19,9 +19,9 @@ plugins.walk = function($elem) {
 
   $elem.prepend("<svg class='chart'></svg>");
 
-  var margin = { top: 10, right: 0, bottom: 25, left: 40 };
+  var margin = { top: 15, right: 5, bottom: 25, left: 40 };
   var width = $elem.width() - margin.left - margin.right;
-  var height = 300 - margin.top - margin.bottom;
+  var height = 270 - margin.top - margin.bottom;
 
   var y = d3.scale.linear()
   .range([height, 0]);
@@ -34,7 +34,8 @@ plugins.walk = function($elem) {
 
   d3.json("http://monitor.javierarce.com/api/month", function(error, json) {
     if (error) return console.warn(error);
-    data = json;
+
+    data = json.slice(0, 15);
 
     var barWidth = width/data.length;
 
@@ -49,16 +50,23 @@ plugins.walk = function($elem) {
     .attr("class", "y axis")
     .call(yAxis);
 
+    // Draw Y-axis grid lines
+    chart.selectAll("line.y")
+    .data(y.ticks(5))
+    .enter().append("line")
+    .attr("class", "y")
+    .attr("x1", 5)
+    .attr("x2", width + 5)
+    .attr("y1", y)
+    .attr("y2", y);
+
     var label = chart.append("text")
-    .attr("x", function() {
-      return (width/2) - (362/2) + margin.left - margin.right;
-    })
+    .attr("x", 0)
     .attr("y", height)
     .attr("dy", "1.5em")
     .attr("font-size", ".7em")
     .attr("font-style", "italic")
-    .text("Number of steps per day. The red bar indicates the current day.")
-    .attr("text-anchor", "middle");
+    .text("Number of steps per day. The red bar indicates the current day.");
 
     var bar = chart.selectAll(".bar")
     .data(data.reverse())
@@ -72,13 +80,17 @@ plugins.walk = function($elem) {
         return "bar";
       }
     })
-    .attr("transform", function(d, i) { return "translate(" + (2 + i * barWidth) + ", 0 )"; });
-
-    bar
-    .attr("y", function(d){ return d.steps ? y(d.steps) : height - 1; })
-    .attr("height", function(d) { return d.steps ? height - y(d.steps) : 1; })
+    .attr("transform", function(d, i) { return "translate(" + (5 + i * barWidth) + ", 0 )"; })
+    .attr("y", function(d){  return height; })
+    .attr("height", 0)
     .attr("width", barWidth - 1);
 
+    bar.transition()
+    .ease("quad")
+    .duration(function(d, i) { return 200; })
+    .delay(function(d, i) { return i*100 })
+    .attr("height", function(d) { return d.steps ? height - y(d.steps) : 0; })
+    .attr("y", function(d){ return d.steps ? y(d.steps) : height; });
   });
 
 };

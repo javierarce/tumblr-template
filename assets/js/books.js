@@ -41,8 +41,14 @@
             });
 
             for (var i = 0; i < out.length; i++) {
-              var $li = $("<li><a href='" + out[i].url + "' title='" + out[i].title.replace(/'/g, '\\'') + "'><img src='" + out[i].cover_url + "?default=false' /></a></li>");
+
+              var title     = out[i].title.replace(/'/g, '&#39;');
+              var url       = out[i].url;
+              var cover_url = out[i].cover_url;
+
+              var $li = $("<li><a href='" + url + "' title='" + title + "'><img src='" + cover_url + "?default=false' /></a></li>");
               $elem.append($li);
+
             }
           }
         });
