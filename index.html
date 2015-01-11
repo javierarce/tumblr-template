@@ -77,7 +77,21 @@
             {block:Photoset}
           <article  class="photo">
             <a href="{Permalink}" class="icon" title="{Name}"></a>
-            {Photoset}
+           
+           <!-- Each of the Photoset photos -->
+    {block:Photos}
+      
+        
+        {block:HighRes}
+          {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" title="{PhotoAlt}">{LinkCloseTag}{Caption}
+        {/block:HighRes}
+        
+        {Caption}
+        
+       
+    {/block:Photos}
+    
+    
             {block:Caption}
         {Caption}
     {/block:Caption}
