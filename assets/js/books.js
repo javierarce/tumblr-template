@@ -8,14 +8,10 @@
 
         var self = this;
 
-        $.ajax({
-          url: "http://books.javierarce.com/api/books/currently_reading",
-          jsonp: "callback",
-          dataType: "jsonp",
-          success: function(response) { 
-            self._onSuccess($elem, response)
-          }
+        $.getJSON("http://books.javierarce.com/api/books/currently_reading", function(response) {
+          self._onSuccess($elem, response)
         });
+
       },
 
       _onSuccess: function($elem, response) {
